@@ -76,9 +76,14 @@ class App extends React.Component {
 class DrumPad extends React.Component {
 	constructor(props) {
 		super(props);
+		this.playSound = this.playSound.bind(this);
+		this.handleKeyPress = this.handleKeyPress.bind(this);
 	}
 
-	playSound() {}
+	playSound(event) {
+		const sound = document.getElementById(this.props.keyiD);
+		sound.play();
+	}
 
 	handleKeyPress(event) {
 		if (event.keyCode === this.props.keyCode) {
@@ -89,7 +94,7 @@ class DrumPad extends React.Component {
 	render() {
 		return (
 			<div className="drum-pad" onClick={this.playSound} id={this.props.desc}>
-				<audio src={this.props.soundBit}></audio>
+				<audio src={this.props.soundBit} className="clip" id={this.props.keyiD}></audio>
 				{this.props.keyiD}
 			</div>
 		);
