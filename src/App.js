@@ -62,7 +62,7 @@ class App extends React.Component {
 			<div id="drum-machine">
 				<div id="display"></div>
 				<div id="pad-container">
-					{this.state.keySet.map((drumPad, i) => {
+					{this.state.keySet.map((drumPad) => {
 						return (
 							<DrumPad keyiD={drumPad.keyiD} soundBit={drumPad.soundBit} desc={drumPad.desc} />
 						);
@@ -91,6 +91,7 @@ class DrumPad extends React.Component {
 	playSound(event) {
 		const sound = document.getElementById(this.props.keyiD);
 		sound.play();
+		document.getElementById('display').textContent = this.props.desc;
 	}
 
 	handleKeyPress(e) {
@@ -110,15 +111,3 @@ class DrumPad extends React.Component {
 }
 
 export default App;
-
-/* Drum Sounds
-Long Open HH - https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3
-Closed HH - https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3
-Bass Drum - https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3
-Snare - https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3
-Side-Stick - https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3
-Hard Kick - https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3
-Clap - https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3
-Kick n Hat - https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3
-Soft Open HH - https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3
-*/
